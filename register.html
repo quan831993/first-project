@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body {
+        background-image: url(./img/X13_wallpaper_final_16x9_FHD.jpg);
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top left;
+        background-attachment: fixed;
+
+    }
+
+    .container {
+        background-color: black;
+        opacity: 50%;
+        width: 350px;
+        margin: 40px auto;
+        height: 500px;
+        box-sizing: border-box;
+        padding: 5px 0 0 70px;
+        border-radius: 5px;
+        color: white;
+        position: relative;
+        box-shadow: 1px 1px 3px 3px whitesmoke;
+    }
+
+    .container input {
+        margin: 5px 0px;
+        width: 200px;
+        height: 12px;
+        outline: none;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+
+    }
+
+    .container button {
+        position: relative;
+        left: 4px;
+        display: block;
+        height: 35px;
+        background-color: antiquewhite;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: 1px 1px 3px 3px rgb(243, 241, 241);
+    }
+
+    .container button:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, red, yellow);
+        outline: none;
+    }
+
+    .body {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    #icon,
+    #iconClose {
+        position: relative;
+        left: -30px;
+        cursor: pointer;
+        color: red;
+        top: 2px;
+    }
+
+    .okAcount {
+        position: relative;
+        left: 0px;
+    }
+
+    a {
+        text-decoration: none;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="body">
+            <h3>ĐĂNG KÝ</h3>
+            <label for="username">Tên đăng nhập</label><br>
+            <input id='username' type="text;" placeholder="Username" onkeydown="entryEmail(event, `email`)">
+            <span class="errorUserName" id="errorUserName" style="display: none;">Tên đăng nhập không hợp lệ</span><br>
+
+            <label for="email"> Email </label> <br>
+            <input id="email" type="text" placeholder="Email" onkeydown="entryEmail(event, `password`)"> <br>
+            <span id="emailExits" style="display:none">Trùng email</span>
+            <span class="errorMail" id="errorMail" style="display: none">Mail không hợp lệ</span>
+
+            <label for="password"> Mật khẩu </label> <br>
+            <input id="password" type="password" placeholder="Password"
+                onkeydown="entryEmail(event, `confirmPassword`)">
+            <i id="icon" onclick="showPassword()" class="fa-solid fa-eye"></i><br>
+            <span class="error" id="error" style="display: none">Sai mật khẩu</span>
+
+            <label for="confirmPassword"> Nhập lại mật khẩu </label> <br>
+            <input id="confirmPassword" type="password" onkeydown="entry(event)" placeholder="Confirm Password">
+            <i id="iconClose" onclick="showConfirmPassword()" class="fa-solid fa-eye"></i> <br>
+            <p id="confirmError" style="display: none">Mật khẩu không khớp</p>
+
+            <button id="button" onclick="register()"> Đăng ký </button>
+
+            <div class="okAcount">
+                Bạn đã có tài khoản?<a href="/login.html">
+                    <p style="color: yellow;">Đăng nhập</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function checkUserName(username) {
+            let re = /^[a-zA-Z0-9\-]+$/
+            if (re.test(username)) {
+                return true
+            } else {
+                return false
+            }
+        }
+        function checkMail(mail) {
+            let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (re.test(mail)) {
+                return true
+            } else {
+                return false;
+            }
+        }
+        function register() {
+            let username = document.getElementById('username').value;
+            let errorUserName = document.getElementById("errorUserName");
+            if (checkUserName(username) == false) {
+                errorUserName.setAttribute("style", "display:block; color:yellow");
+            } else {
+                errorUserName.setAttribute("style", "display:none");
+                document.getElementById("username").value = "";
+            }
+            let mail = document.getElementById("email").value;
+            let errorMail = document.getElementById("errorMail");
+            if (checkMail(mail) == false) {
+                errorMail.setAttribute("style", "display:block; color:yellow");
+                document.getElementById("email").value = "";
+            } else {
+                errorMail.setAttribute("style", "display:none");
+                document.getElementById("email").value = "";
+            }
+            let pass = document.getElementById("password").value;
+            let p = document.getElementById("error")
+            if (pass.length < 6 || pass.indexOf(" ") != -1) {
+                p.setAttribute("style", "display:block;color:yellow")
+                document.getElementById("password").value = "";
+            } else {
+                p.setAttribute("style", "display:none");
+                document.getElementById("password").value = "";
+            }
+            let pConfirm = document.getElementById("confirmError");
+            let passConfirm = document.getElementById("confirmPassword").value;
+            if (passConfirm !== pass) {
+                pConfirm.setAttribute("style", "display:block;color:yellow");
+                document.getElementById("confirmPassword").value = "";
+            } else {
+                pConfirm.setAttribute("style", "display:none");
+                document.getElementById("confirmPassword").value = "";
+            }
+            if (checkUserName(username) && checkMail(mail) && (pass.length >= 6 && pass.indexOf(" ") == -1) && (passConfirm == pass)) {
+                let obj = {
+                    username: username,
+                    email: mail,
+                    password: pass
+                }
+                let getInformation = localStorage.getItem("information");
+                if (getInformation == null) {
+                    getInformation = [];
+                    getInformation.push(obj);
+                    localStorage.setItem("information", JSON.stringify(getInformation));
+                    window.location.href = "login.html";
+                } else {
+                    getInformation = localStorage.getItem("information");
+                    getInformation = JSON.parse(getInformation);
+                    let emailExits = document.getElementById("emailExits");
+                    let flag = false;
+                    for (let i = 0; i < getInformation.length; i++) {
+                        if (obj.email == getInformation[i].email) {
+                            console.log("Trùng email");
+                            emailExits.setAttribute("style", "display:block;color:yellow");
+                            flag = false;
+                            return;
+                        } else {
+                            flag = true;
+                        }
+                    }
+                    if (flag == true) {
+                        emailExits.setAttribute("style", "display:none");
+                        getInformation.push(obj);
+                        localStorage.setItem("information", JSON.stringify(getInformation));
+                        window.location.href = "login.html";
+                    }
+                }
+            }
+        }
+        function showPassword() {
+            let password = document.getElementById("password");
+            let icon = document.getElementById("icon");
+            if (password.type == "password") {
+                password.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                password.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+        function showConfirmPassword() {
+            let showConfirmPassword = document.getElementById("confirmPassword");
+            let iconClose = document.getElementById("iconClose");
+            if (showConfirmPassword.type == "password") {
+                showConfirmPassword.type = "text";
+                iconClose.classList.remove("fa-eye");
+                iconClose.classList.add("fa-eye-slash");
+            } else {
+                showConfirmPassword.type = "password";
+                iconClose.classList.remove("fa-eye-slash");
+                iconClose.classList.add("fa-eye");
+            }
+        }
+        function entryEmail(event, input) {
+            if (event.key == "Enter") {
+                let idInput = document.getElementById(input);
+                idInput.focus();
+            }
+        }
+        function entry(event) {
+            if (event.key == "Enter") {
+                register();
+            }
+        }
+    </script>
+    </div>
+
+
+</body>
+
+</html>

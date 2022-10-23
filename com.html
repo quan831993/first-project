@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="com.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="menu">
+    <div class="menu1">
+        <img src="./img/logo.png"
+            class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+    </div>
+    <div class="menu2">
+        <ul>
+            <li>
+                <div class="dropdown">
+                    <p style="cursor: pointer;">SẢN PHẨM</p>
+                    <div class="dropdown-content">
+                        <a href="laptop.html">Máy tính xách tay</a><br>
+                        <a href="phone.html">Điện thoại</a><br>
+                        <a href="com.html">Máy tính bộ</a><br>
+                        <a href="">Bo mạch chủ</a><br>
+                        <a href="">Card đồ họa</a><br>
+                        <a href="">Màn hình</a><br>
+                        <a href="">Cases</a><br>
+                        <a href="">Bàn phím</a><br>
+                        <a href="">Chuột & lót chuột</a><br>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <p style="cursor: pointer;">SÁNG TẠO</p>
+                    <div class="dropdown-content">
+                        <a href="tehee.html">Anime Matrix™ Pixel Editor</a><br>
+                        <a href="tehee.html">ROG Nebula Display & Nebula HDR</a><br>
+                        <a href="tehee.html">ROG Intelligent Cooling</a><br>
+                        <a href="tehee.html">ROG Laptop Display Leadership</a><br>
+                        <a href="tehee.html">Aura</a><br>
+                        <a href="tehee.html">Armoury Crate</a><br>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <p style="cursor: pointer;">TẢI XUỐNG</p>
+                    <div class="dropdown-content">
+                        <a href="https://rog.asus.com/wallpapers/">Wallpaper</a><br>
+                        <a href="tehee.html">Aura Sync</a><br>
+                        <a href="tehee.html">Armoury crate</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <p style="cursor: pointer;">CỘNG ĐỒNG</p>
+                    <div class="dropdown-content">
+                        <a href="tehee.html">ROG Elite Program</a><br>
+                        <a href="tehee.html">ROG esports teams</a><br>
+                        <a href="tehee.html">Blogs</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="home.html" style="text-decoration: none; color: white">TRANG CHỦ</a></li>
+        </ul>
+    </div>
+    <div class="menu3">
+        <img src="./img/asus logo.webp" alt="">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="container">
+            <div class="header">
+                <i style="cursor: pointer;" class="fa-solid fa-user"></i>
+                <div class="dropdown">
+                    <span class="user" id="user" style="cursor: pointer; color: white;"></span>
+                    <div class="dropdown-content">
+                        <button onclick="showBox()">Đổi mật khẩu</button><br>
+                        <button onclick="logOut()">Đăng xuất</button>
+                    </div>
+                </div>
+            </div>
+            <div class="change_password" id="changePassword" style="display:none ;">
+              <label for="password">Mật khẩu</label><br>
+                  <input id="password" type="password" placeholder="Password" onkeydown="entry(event, `newPass`)">
+                  <i id="icon" onclick="showPassword()" class="fa-solid fa-eye"></i><br>
+                  <span class="error" id="error" style="display: none">Sai mật khẩu</span><br>
+                  
+
+                  <label for="newPass">Mật khẩu mới</label><br>
+                  <input id="newPass" type="password" placeholder="New password" onkeydown="entry(event, `reNewPass`)">
+                  <i id="newIcon" onclick="showNewPassword()" class="fa-solid fa-eye"></i><br>
+                  <span class="errorNew" id="errorNew" style="display: none">Mật khẩu không hợp lệ</span><br>
+
+                  <label for="reNewPass">Nhập lại mật khẩu mới</label>
+                  <input id="reNewPass" type="password" placeholder="Re new password" onkeydown="entry1(event)">
+                  <i id="iconClose" onclick="showConfirmPassword()" class="fa-solid fa-eye"></i> <br>
+                  <span class="errorReNew" id="errorReNew" style="display: none">Mật khẩu không khớp</span><br>
+
+                  <div class="confirm"><button id="button" onclick="changePass()">Xác nhận</button></div>
+                  <div class="cancel" onclick="hideBox()"><button>Hủy</button></div>
+
+          </div>
+        </div>
+        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+    </div>
+</div>
+  <!-- phần thân -->
+  <div class="grid-container " id="list-product">
+
+    
+       
+    
+      <script src="./data.js"></script>
+      <script src="./com.js"></script>
+</body>
+</html>

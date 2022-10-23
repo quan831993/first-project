@@ -1,0 +1,183 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+body {
+    background-image: url(./img/ROG_wallpaper_Cyberscape_1920x1080.jpg);
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+.menu {
+    background: black;
+    display: flex;
+}
+
+.menu img {
+    width: 135px;
+}
+
+.menu2 ul {
+    display: flex;
+}
+
+.menu2 ul li {
+    text-align: center;
+    color: white;
+    display: block;
+    padding: 0px 20px 0px 20px;
+    border-right: 1px solid #ccc;
+    height: 80px;
+    line-height: 80px;
+}
+
+.menu3 {
+    margin-left: 400px;
+    display: flex;
+}
+
+.menu3 i {
+    color: white;
+    height: 80px;
+    line-height: 80px;
+    padding: 0px 20px 0px 20px;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    color: black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.dropdown-content button {
+    position: relative;
+    display: block;
+    height: 40px;
+    background-color: rgb(17, 0, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    color: white;
+}
+
+
+.header i {
+    position: relative;
+}
+
+#user {
+    position: relative;
+    color: white;
+}
+
+.change_password {
+    position: absolute;
+    background-color: black;
+    opacity: 50%;
+    width: 350px;
+    height: 500px;
+    left: 50%;
+    transform: translate(-50%);
+    top: 130px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin: 40px auto;
+    box-sizing: border-box;
+    padding: 40px 0 0 70px;
+    color: white;
+}
+
+
+
+.change_password input {
+    margin: 5px 0px;
+    width: 200px;
+    height: 30px;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.confirm button {
+    position: absolute;
+    left: 160px;
+    display: block;
+    height: 35px;
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 3px 3px rgb(243, 241, 241);
+}
+
+.confirm button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right, red, yellow);
+    outline: none;
+}
+
+.cancel button {
+    position: absolute;
+    left: 85px;
+    display: block;
+    height: 35px;
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 3px 3px rgb(243, 241, 241);
+}
+
+.cancel button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right, red, yellow);
+    outline: none;
+}
+
+#icon,
+#iconClose,
+#newIcon {
+    position: relative;
+    left: -45px;
+    cursor: pointer;
+    color: red;
+    top: 2px;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body {
+        background-image: url(./img/ROG_wallpaper_S17_FHD.jpg);
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top left;
+        background-attachment: fixed;
+    }
+
+    .container {
+        background-color: black;
+        opacity: 50%;
+        width: 350px;
+        margin: 50px auto;
+        height: 500px;
+        box-sizing: border-box;
+        padding-top: 70px;
+        padding-left: 80px;
+        border-radius: 5px;
+        color: white;
+        position: relative;
+        box-shadow: 1px 1px 3px 3px whitesmoke;
+    }
+
+    .container input {
+        margin: 5px 0px;
+        width: 200px;
+        height: 12px;
+        outline: none;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .container button {
+        position: absolute;
+        display: block;
+        margin: 0 auto;
+        left: 100px;
+        height: 35px;
+        background-color: antiquewhite;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 1px 1px 3px 3px white;
+    }
+
+    .body {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    .body i {
+        position: relative;
+        left: -30px;
+        cursor: pointer;
+        color: red;
+        top: 2px;
+    }
+
+    .container button:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, red, yellow);
+        outline: none;
+    }
+
+    .noAcount {
+        position: relative;
+        top: 80px;
+        left: -30px;
+    }
+
+    a {
+        text-decoration: none;
+        color: yellow;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="body">
+            <h3 style="color: white;">ĐĂNG NHẬP</h3>
+            <label for="">Email</label><br>
+            <input id='email' type="text" placeholder="email" onkeydown="entryEmail(event, `password`)">
+            <span class="errorEmail" id="errorEmail" style="display: none">Email không chính xác</span><br>
+
+            <label for="password">Mật khẩu </label> <br>
+            <input id="password" type="password" placeholder="Password" onkeydown="entry(event)">
+            <i id="icon" onclick="showPassword()" class="fa-solid fa-eye"></i> <br>
+            <span class="error" id="error" style="display: none">Password không chính xác</span>
+
+            <button id="button" onclick="checkUsernamePass()"> Đăng nhập </button>
+            <div class="noAcount">
+                Bạn chưa có tài khoản? <a href="/register.html">Đăng ký</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showPassword() {
+            let showPass = document.getElementById("icon");
+            let showInputPass = document.getElementById("password");
+            if (showInputPass.type == "password") {
+                showInputPass.type = "text";
+                showPass.classList.remove("fa-eye");
+                showPass.classList.add("fa-eye-slash");
+            } else {
+                showInputPass.type = "password";
+                showPass.classList.remove("fa-eye-slash");
+                showPass.classList.add("fa-eye");
+            }
+        }
+        function checkUsernamePass() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let error = document.getElementById("error");
+            if (localStorage.getItem("information") != null) {
+                let arrAcount = JSON.parse(localStorage.getItem("information"));
+                let arrEmail = [];
+                let arrPassword = [];
+                for (let i = 0; i < arrAcount.length; i++) {
+                    arrEmail.push(arrAcount[i].email);
+                    arrPassword.push(arrAcount[i].password);
+                }
+
+                let errorEmail = document.getElementById("errorEmail");
+                let errorPassword = document.getElementById("errorPassword");
+                if (arrEmail.indexOf(email) != -1) {
+                    error.setAttribute("style", "display: none");
+                    errorEmail.setAttribute("style", "display: none");
+                    let index = arrEmail.indexOf(email);
+                    if (arrPassword[index] == password) {
+                        error.setAttribute("style", "display: none");
+                        window.location.href = "home.html";
+                        localStorage.setItem('booLogin', 'true');
+                        localStorage.setItem('indexLogin', index);
+                    } else {
+                        error.setAttribute("style", "display: block; color: yellow");
+                        document.getElementById("password").value = "";
+                    }
+                    document.getElementById("email").value = "";
+                } else {
+                    errorEmail.setAttribute("style", "display: block; color: yellow");
+                    error.setAttribute("style", "display: none");
+                    document.getElementById("password").value = "";
+                    document.getElementById("emai").value = "";
+                }
+            } else {
+                error.setAttribute("style", "display: block; color: yellow");
+            }
+        }
+        function entryEmail(event, input) {
+            if (event.key == "Enter") {
+                let idInput = document.getElementById(input);
+                idInput.focus();
+            }
+        }
+        function entry(event, input) {
+            if (event.key == "Enter") {
+                checkUsernamePass();
+            }
+        }          
+    </script>
+</body>
+
+</html>
