@@ -77,7 +77,7 @@ function changePass() {
         errorReNew.setAttribute("style", "display: none");
     }
   
-    if (password !== newPass && newPass.length>=6 && reNewPass === newPass) {
+    if (password != getInformation[index].password && password !== newPass && newPass.length>=6 && reNewPass === newPass) {
         getInformation[index].password = newPass;
         localStorage.setItem('information',JSON.stringify(getInformation));
         window.location.href = "home.html";
